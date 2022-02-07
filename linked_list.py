@@ -4,9 +4,11 @@ class Node:
   Models two attributes - data and the link to the next node in the list
   '''
 
+  # Instance variables
   data = None
   next_node = None
 
+  # Constructor
   def __init__(self, data):
     self.data = data
 
@@ -63,7 +65,7 @@ class linkedList:
         current = current.next_node
     return None
 
-  def insert(data, index):
+  def insert(self, data, index):
     """
     Inserts a new Node containing data at index position
     Insertion takes O(1) / constant time
@@ -113,6 +115,19 @@ class linkedList:
 
     return current
 
+  def node_at_index(self, index):
+    if index == 0:
+      return self.head
+    else:
+      current = self.head
+      position = 0
+
+      while position < index:
+        current = current.next_node
+        position += 1
+
+      return current
+
   def __repr__(self):
     """
     Provides string representation of the list
@@ -130,5 +145,4 @@ class linkedList:
         nodes.append("[%s]" % current.data)
 
       current = current.next_node
-    
     return '-> '.join(nodes)
